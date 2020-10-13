@@ -1,0 +1,71 @@
+{
+	"Print to Standard Output": {
+		"prefix": "write(*,*) ",
+		"body": "write(*,*) $0 "
+	},
+	"Read from Standard input": {
+		"prefix": "read() ",
+		"body": "read(unit = *$1,fmt = *$2) $0"
+	},
+	"Defining integers": {
+		"prefix": "integer :: ",
+		"body": "integer :: $0",
+	},
+	"Defining Constant integers": {
+		"prefix": "integer,parameter :: ",
+		"body": "integer,parameter :: $0",
+	},
+	"Defining Real Numbers": {
+		"prefix": "real :: ",
+		"body": "real :: $0",
+	},
+	"Defining Constant Real Numbers": {
+		"prefix": "real,parameter :: ",
+		"body": "real,parameter :: $0",
+	},
+	"Defining Characters": {
+		"prefix": "character",
+		"body": "character(len=$1) :: $0",
+	},
+	"Opening a file for reading and writing": {
+		"prefix": "open()",
+		"body": "open(unit = $1 , file='$2',action='readwrite')$0"
+	},
+	"MPI": {
+		"prefix": "include 'mpif.h",
+		"body": [
+			"include 'mpif.h'",
+			"integer :: ierrno, rank ,np",
+			"$1",
+			"",
+			"call MPI_INIT(ierrno)",
+			"call MPI_Comm_Size(MPI_COMM_WORLD, np , ierrno)",
+			"call MPI_Comm_Rank(MPI_COMM_WORLD,rank,ierrno)",
+			"$0",
+		]
+	},
+	"Structure": {
+		"prefix": "type",
+		"body": [
+			"type $1",
+			"$0",
+			"end type"
+		],
+	}
+	// Place your Fortran Programming workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+}
